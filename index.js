@@ -5,7 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @require		 https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
-// @match        https://service.cloud.teu.ac.jp/portal/mypage/*
+// @match        https://service.cloud.teu.ac.jp/portal/mypage/
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // ==/UserScript==
 import Cookies from "js-cookie";
