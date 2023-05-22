@@ -13,14 +13,14 @@ class Config {
     constructor() {
         this.attendSeatId = undefined;
         this.attendDate = undefined;
-        this.attendGraceSec = 60 * 20;
+        this.attendGraceSec = 60 * 50;
         this.sendGraceSec = 60 * 4;
         this.lessonSecsOfDay = [31800, 38700, 47700, 54600, 61500];
     }
     readCookie() {
         const d = Cookies.get("attend_date");
         this.attendDate = d != undefined ? new Date(d) : undefined;
-        const id = Cookies.get("attend_sead_id");
+        const id = Cookies.get("attend_seat_id");
         this.attendSeatId = id != undefined ? Number(id) : undefined;
         return this;
     }
@@ -55,7 +55,7 @@ function main() {
             config.attendDate = undefined;
             config.writeCookie();
         }
-        time.textContent = `${Math.floor(-diffSec / 60)}分${Math.floor(diffSec % 60)}秒後に出席します。`;
+        time.textContent = `${Math.floor(-diffSec / 60)}分${Math.floor(-diffSec % 60)}秒後に出席します。`;
     }, 100);
 }
 function loopClamp(value, start, end) {

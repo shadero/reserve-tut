@@ -5,7 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @require		 https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
-// @match        https://service.cloud.teu.ac.jp/portal/mypage/*
+// @match        https://service.cloud.teu.ac.jp/portal/mypage/
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // ==/UserScript==
 
@@ -14,7 +14,7 @@ import Cookies from "js-cookie";
 class Config {
 	attendSeatId: number | undefined = undefined;
 	attendDate: Date | undefined = undefined;
-	attendGraceSec: number = 60 * 20;
+	attendGraceSec: number = 60 * 50;
 	sendGraceSec: number = 60 * 4;
 
 	lessonSecsOfDay: number[] = [31800, 38700, 47700, 54600, 61500];
@@ -22,7 +22,7 @@ class Config {
 	readCookie() {
 		const d = Cookies.get("attend_date");
 		this.attendDate = d != undefined ? new Date(d) : undefined;
-		const id = Cookies.get("attend_sead_id");
+		const id = Cookies.get("attend_seat_id");
 		this.attendSeatId = id != undefined ? Number(id) : undefined;
 		return this;
 	}
@@ -62,7 +62,7 @@ function main() {
 			config.writeCookie();
 		}
 
-		time.textContent = `${Math.floor(-diffSec / 60)}分${Math.floor(diffSec % 60)}秒後に出席します。`
+		time.textContent = `${Math.floor(-diffSec / 60)}分${Math.floor(-diffSec % 60)}秒後に出席します。`
 	}, 100);
 }
 
