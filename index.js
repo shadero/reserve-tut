@@ -142,7 +142,7 @@ function sendAttend(seatId) {
             return;
         }
         if (this.status == HTTP_STATUS_OK) {
-            alert(this.responseText);
+            location.reload();
         }
         else {
             alert(this.responseText);

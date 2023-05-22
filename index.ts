@@ -161,7 +161,7 @@ function sendAttend(seatId: number) {
 		}
 
 		if (this.status == HTTP_STATUS_OK) {
-			alert(this.responseText);
+			location.reload()
 		} else {
 			alert(this.responseText);
 		}
