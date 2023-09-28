@@ -68,10 +68,9 @@ function main() {
 }
 
 function loopClamp(value: number, start: number, end: number): number {
-	let fixedIdx = value % end - start;
-	if (fixedIdx < 0) {
-		fixedIdx += end - start;
-	}
+	let fixedIdx = (value - start) % (end - start);
+	if (fixedIdx < 0)
+		fixedIdx += (end - start);
 	return fixedIdx + start;
 }
 
