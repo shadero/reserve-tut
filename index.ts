@@ -175,20 +175,19 @@ function sendAttend(seatId: number) {
 }
 
 function insertReserveUI(config: Config) {
+	// TODO: 部屋番号も入力できるようにする。
+	// 仮履修の場合は部屋番号の入力が必要。通常学期が始まってから1週間程度で仮履修状態は解除されるので優先度は低いが、いつか対応したい。
 	const innerHtml = String.raw`<div class="l__columns">
         <section class="sec_web-attend l__item -full">
             <h2 class="c__ttl -tp1 e__ttl -md3 -sm3">出席の予約</h2>
-                <div class="attend-form"">
+                <div class="attend-form">
                     <div class="group">
-                        <span class="label">部屋番号</span>
-                        <input type="text" class="e__fld" placeholder="例: KE101">
-                    </div>
-                    <div class="group">
-                        <span class="label">座席コード</span><input type="text" class="e__fld" placeholder="例: 9876" id="reserveSeatId">
+                        <span class="label">座席コード</span>
+						<input type="text" class="e__fld" placeholder="例: 9876" id="reserveSeatId">
                     </div>
                     <input type="button" class="btn-submit e__btn" value="予約" id="reserveButton">
-                    <p class="e__prg -md2 -sm2"">授業開始${config.attendGraceSec / 60}分前から予約ができます。必ず席に座った状態で入力してください。</p>
-					<p class="e__prg -md2 -sm2"" id="sendTime"></p>
+                    <p class="e__prg -md2 -sm2">授業開始${config.attendGraceSec / 60}分前から予約ができます。必ず席に座った状態で入力してください。</p>
+					<p class="e__prg -md2 -sm2" id="sendTime"></p>
             </h2>
         </section>
 </div>`
