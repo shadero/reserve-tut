@@ -37,8 +37,8 @@ class Config {
     }
 }
 function main() {
-    insertReserveUI();
     const config = new Config().readCookie();
+    insertReserveUI(config);
     const button = document.getElementById("reserveButton");
     button.addEventListener('click', function () {
         reserveButtonClick(config);
@@ -153,8 +153,8 @@ function sendAttend(seatId) {
     xmlHttpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlHttpRequest.send("upload_data=%7B%22status%22%3A%22ATTENDING%22%2C%22seat_code%22%3A" + seatId + "%7D");
 }
-function insertReserveUI() {
-    const innerHtml = String.raw `<div class="l__columns">
+function insertReserveUI(config) {
+    const innerHtml = String.raw`<div class="l__columns">
         <section class="sec_web-attend l__item -full">
             <h2 class="c__ttl -tp1 e__ttl -md3 -sm3">出席の予約</h2>
                 <div class="attend-form"">
@@ -166,12 +166,12 @@ function insertReserveUI() {
                         <span class="label">座席コード</span><input type="text" class="e__fld" placeholder="例: 9876" id="reserveSeatId">
                     </div>
                     <input type="button" class="btn-submit e__btn" value="予約" id="reserveButton">
-                    <p class="e__prg -md2 -sm2"">授業開始15分前から予約ができます。必ず席に座った状態で入力してください。</p>
+                    <p class="e__prg -md2 -sm2"">授業開始${config.attendGraceSec / 60}分前から予約ができます。必ず席に座った状態で入力してください。</p>
 					<p class="e__prg -md2 -sm2"" id="sendTime"></p>
             </h2>
         </section>
 </div>`;
-    const element = getElementByXpath(String.raw `//*[@id="top"]/div[1]/main/div`);
+    const element = getElementByXpath(String.raw`//*[@id="top"]/div[1]/main/div`);
     element.insertAdjacentHTML("afterbegin", innerHtml);
 }
 function getElementByXpath(path) {
