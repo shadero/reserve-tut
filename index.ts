@@ -32,7 +32,7 @@ class Config {
 		if (this.attendDate == undefined)
 			Cookies.remove("attend_date");
 		else
-			Cookies.set("attend_date", this.attendDate.toString(), {expires: 1});
+			Cookies.set("attend_date", this.attendDate.toString(), { expires: 1 });
 
 		if (this.attendSeatId == undefined)
 			Cookies.remove("attend_seat_id");
@@ -102,7 +102,7 @@ function searchLessonDate(date: Date, scheduleOfDay: number[], attendGraceSec: n
 
 	if (lastAttendableIdx < 0)
 		return null;
-	if (when == 0){
+	if (when == 0) {
 		const lastAttendableDate = getDayDate(searchTargetDate);
 		lastAttendableDate.setSeconds(scheduleOfDay[lastAttendableIdx]);
 		const diffSec = (searchTargetDate.getTime() - lastAttendableDate.getTime()) / 1000;
