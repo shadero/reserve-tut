@@ -83,6 +83,10 @@ function getSecOfDay(date: Date): number {
 	return (date.getTime() - day.getTime()) / 1000;
 }
 
+// whenが0の場合、その時刻に出席可能な授業の、授業開始時のdateを返す。
+// whenが正の値の場合、次に始まる授業のdateを返す。
+// whenが負の値の場合、前に行われていた授業のdateを返す。
+// TODO: 処理の中身が複雑で読めないので、リファクタリングする。
 function searchLessonDate(date: Date, scheduleOfDay: number[], attendGraceSec: number, when: number = 0): Date | null {
 	const searchTargetDate: Date = date;
 	if (getSecOfDay(date) < scheduleOfDay[0])
