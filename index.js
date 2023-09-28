@@ -1,3 +1,4 @@
+"use strict";
 // ==UserScript==
 // @name        Reserve TUT
 // @namespace    http://tampermonkey.net/
@@ -9,7 +10,7 @@
 // @match        https://service.cloud.teu.ac.jp/portal/mypage/?*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // ==/UserScript==
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 class Config {
     constructor() {
         this.attendSeatId = undefined;
@@ -154,7 +155,7 @@ function sendAttend(seatId) {
     xmlHttpRequest.send("upload_data=%7B%22status%22%3A%22ATTENDING%22%2C%22seat_code%22%3A" + seatId + "%7D");
 }
 function insertReserveUI(config) {
-    const innerHtml = String.raw`<div class="l__columns">
+    const innerHtml = String.raw `<div class="l__columns">
         <section class="sec_web-attend l__item -full">
             <h2 class="c__ttl -tp1 e__ttl -md3 -sm3">出席の予約</h2>
                 <div class="attend-form"">
@@ -171,7 +172,7 @@ function insertReserveUI(config) {
             </h2>
         </section>
 </div>`;
-    const element = getElementByXpath(String.raw`//*[@id="top"]/div[1]/main/div`);
+    const element = getElementByXpath(String.raw `//*[@id="top"]/div[1]/main/div`);
     element.insertAdjacentHTML("afterbegin", innerHtml);
 }
 function getElementByXpath(path) {

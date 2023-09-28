@@ -10,7 +10,7 @@
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // ==/UserScript==
 
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 class Config {
 	attendSeatId: number | undefined = undefined;
